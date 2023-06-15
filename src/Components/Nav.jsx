@@ -6,9 +6,9 @@ const Navegation = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem 3rem;
-    background-color: #000;
-    color: #fff;`;
+    padding: 2rem 5rem;
+    background-color: #fff;
+    color: #000;`;
 
 const Contenido = styled.div`
     display: flex;
@@ -20,6 +20,7 @@ const Space = styled.div`
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    color: #000;
 `;
 
 const Logo = styled.img`
@@ -44,9 +45,9 @@ const Nav = () => {
                 </Space>
             </Space>
                 <Contenido>
-                    <i class="fa-solid fa-heart"></i>                    
-                    <i class="fa-solid fa-cart-shopping"></i>       
-                    <a><i class="fa-solid fa-circle-user"></i> Login</a>
+                    <i className="fa-solid fa-heart"></i>                    
+                    <i className="fa-solid fa-cart-shopping"></i>       
+                    <a><i className="fa-solid fa-circle-user"></i> Login</a>
                 </Contenido> 
         </Navegation>
     )

@@ -2,13 +2,16 @@ import "../index.css"
 import styled from 'styled-components';
 import { Link, Outlet } from "react-router-dom";
 import Nav from "../Components/Nav";
+import Banner from "../Components/Banner";
+import Categorias from "../Components/Categorias";
 
 const App = () => {
     return (
         <>
-        <Nav/>
+        <Nav/>        
         <div className="container">            
-            <h1>Appi</h1>
+            <Banner/>
+            <Categorias/>
             <section>
                 <Outlet/>
             </section>
