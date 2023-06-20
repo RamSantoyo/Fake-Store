@@ -48,5 +48,14 @@ async function Categories(){
     }
 }
 
+async function Category(category){
+    try {
+        const res = await fetch(`https://fakestoreapi.com/products/category/${category}`);
+        const data = await res.json();
+        return {data};
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-export default {Allproducts, Categories, Usuarios, Login}
+export default {Allproducts, Categories, Usuarios, Login, Category};

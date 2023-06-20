@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Content from "../Content/App.jsx";
 import NotFound from "../Views/Error.jsx";
-import Store from "../Views/Store.jsx";
+import Principal from "../Views/Principal.jsx";
 import Api from "../Apis/Api.jsx";
 
 export const Router = createBrowserRouter([    
@@ -13,7 +13,7 @@ export const Router = createBrowserRouter([
         children: [
             {
                 index : true,
-                element: <Store />,
+                element: <Principal />,
                 //loader: Api.Allproducts,
             },
             {
