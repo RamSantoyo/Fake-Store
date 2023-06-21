@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { addCategory, clearCategory } from '../Store/Category.jsx';
-import StyledLoader from "./StyledLoader";
+import Cateloader from "./Cateloader";
 import styled from "styled-components";
 import Api from "../Apis/Api";
 
@@ -58,9 +58,10 @@ const Categorias = () => {
             <Contenedor>                
                 { loading === true ? (
                     <React.Fragment>
-                        <StyledLoader />
-                        <StyledLoader />
-                        <StyledLoader />
+                        <Cateloader />
+                        <Cateloader />
+                        <Cateloader />
+                        <Cateloader />
                     </React.Fragment>
                 ):(
                 categorias.map((categoria) => (

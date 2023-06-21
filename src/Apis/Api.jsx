@@ -9,6 +9,16 @@ async function Allproducts() {
     }
 }
 
+async function Producto(id){
+    try {
+        const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const data = await res.json();
+        return {data};
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 async function Usuarios(){
     try{
         const res = await fetch('https://fakestoreapi.com/users')
@@ -58,4 +68,4 @@ async function Category(category){
     }
 }
 
-export default {Allproducts, Categories, Usuarios, Login, Category};
+export default {Allproducts, Producto, Categories, Usuarios, Login, Category};

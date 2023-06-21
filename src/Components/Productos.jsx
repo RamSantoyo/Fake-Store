@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import StyledLoader from "./StyledLoader";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import Star from "./Star";
 import Api from "../Apis/Api";
 
 const Contenedorcard = styled.div`
@@ -10,7 +12,7 @@ const Contenedorcard = styled.div`
     gap: 3rem;
 `;
 
-const Tarjeta = styled.div`
+const Tarjeta = styled(Link)`
     transition: all .3s ease-in-out;
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -33,21 +35,13 @@ const Contenidocard = styled.div`
     padding: 0 2rem;
 `;
 
-const Acciones = styled.div`
+const Stars = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: .5rem;
     p{
         font-weight: var(--grande);
-    }
-    i{
-        transition: all .3s ease-in-out;
-        font-size: 1.3rem;
-    }
-    i:hover{
-        transition: all .3s ease-in-out;
-        scale: 1.3;
-        cursor: pointer;
     }
 `;
 
@@ -84,23 +78,20 @@ const Productos = () => {
             <h2>Productos</h2>
             <Contenedorcard>
             {  loading || preload ? (
-                <React.Fragment>
-                    <StyledLoader />
-                    <StyledLoader />
-                    <StyledLoader />
-                </React.Fragment>
+                Array.from({ length: 6 }).map((_, i) => (
+                    <StyledLoader key={i} />
+                  ))
             ) : (                                  
-            productos.map((producto) => (
-                <Tarjeta key={producto.id}>
+            productos.map((producto) => (                
+                <Tarjeta key={producto.id} to={`/producto/${producto.id}`}>
                     <img src={producto.image} alt={producto.title} />
                     <Contenidocard>
                         <h3>{producto.title.substring(0, 10)}</h3>
                         <p>{producto.category}</p>
-                        <Acciones>
+                        <Stars >
                             <p>${producto.price}</p>
-                            <i className="fa-solid fa-heart"></i>
-                            <i className="fa-solid fa-cart-shopping"></i>
-                        </Acciones>
+                            <Star />
+                        </Stars>
                     </Contenidocard>
                 </Tarjeta>
           )))}
