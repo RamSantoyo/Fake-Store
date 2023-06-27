@@ -4,6 +4,7 @@ import Content from "../Content/App.jsx";
 import NotFound from "../Views/Error.jsx";
 import Principal from "../Views/Principal.jsx";
 import Producto from "../Views/Producto.jsx";
+import Car from "../Views/Carrito.jsx";
 import Api from "../Apis/Api.jsx";
 
 export const Router = createBrowserRouter([    
@@ -17,15 +18,15 @@ export const Router = createBrowserRouter([
                 element: <Principal />,
             },
             {
-                path: "/Producto/:id",
+                path: "/producto/:id",
                 element: <Producto />,
                 loader: ({ params }) => Api.Producto(params.id),
             },
             {
-                //path: "/pokemon/:name",
-                //element: <Pokemon />,
-                //loader: ({ params }) => api.getPokemon(params.name),
+                path: "/carrito",
+                element: <Car />,
             },  
         ],
     },
 ]);
+

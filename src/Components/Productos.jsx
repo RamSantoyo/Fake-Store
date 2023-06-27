@@ -42,6 +42,7 @@ const Stars = styled.div`
     gap: .5rem;
     p{
         font-weight: var(--grande);
+        font-size: 1.2rem;
     }
 `;
 
