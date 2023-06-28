@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import Logotipo from "../assets/logo.png"
 import { Link } from "react-router-dom"
-
+import Carrito from "./Carrito"
 const Navegation = styled.nav`
     display: flex;
     justify-content: space-between;
@@ -46,7 +46,7 @@ const Nav = () => {
             </Space>
                 <Contenido>
                     <i className="fa-solid fa-heart"></i>                    
-                    <i className="fa-solid fa-cart-shopping"></i>  
+                    <Carrito />
                     <Link to="/carrito">Carrito</Link>     
                     <a><i className="fa-solid fa-circle-user"></i> Login</a>
                 </Contenido> 
