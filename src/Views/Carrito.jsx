@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { removeCar, sumCar, resCar } from '../Store/Car.jsx';
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -50,9 +51,35 @@ const Acciones = styled.div`
 const Borrar = styled.i`
     transition: all .3s ease-in-out;
     color: white;
-    background-color: #000;
+    background-color: #BA0000;
     border-radius: 50%;
-    padding: .9rem;
+    padding: .6rem;
+    cursor: pointer;
+    &:hover{
+        trnsition: all .3s ease-in-out;
+        scale: 1.1;
+    }
+`;
+
+const Input = styled.input`
+    border: none;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    padding: .6rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    width: 2rem;
+    text-align: center;
+`;
+
+const Editcnt = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+`;
+
+const Btncant = styled.i`
+    transition: all .3s ease-in-out;;
     cursor: pointer;
     &:hover{
         trnsition: all .3s ease-in-out;
@@ -64,6 +91,8 @@ const Carrito = () => {
 
     const products = useSelector(state => state.Car.value);
     const dispatch = useDispatch();
+
+    console.log(products);
     return (
         <div>
             <h1>Carrito</h1>
@@ -80,7 +109,18 @@ const Carrito = () => {
                                 </Cnt>
                             </ContenidoCard>
                             <Acciones>
-                                <Borrar className="fa-solid fa-trash"></Borrar>
+                                <Borrar
+                                    className="fa-solid fa-trash" onClick={() => dispatch(removeCar(item.id))}>
+                                </Borrar>
+                                <Editcnt>
+                                    <Input type="text" value={item.cantidad} /> 
+                                    <Btncant 
+                                    className="fa-solid fa-minus" onClick={() => dispatch(resCar(item.id))}>                                        
+                                    </Btncant>
+                                    <Btncant className="fa-solid fa-plus" 
+                                    onClick={() => dispatch(sumCar(item.id))}>
+                                    </Btncant>                                                                       
+                                </Editcnt>
                             </Acciones>
                         </Card>
                     ))                                
