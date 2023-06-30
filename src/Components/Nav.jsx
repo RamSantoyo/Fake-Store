@@ -46,8 +46,7 @@ const Nav = () => {
             </Space>
                 <Contenido>
                     <i className="fa-solid fa-heart"></i>                    
-                    <Carrito />
-                    <Link to="/carrito">Carrito</Link>     
+                    <Carrito />                         
                     <a><i className="fa-solid fa-circle-user"></i> Login</a>
                 </Contenido> 
         </Navegation>

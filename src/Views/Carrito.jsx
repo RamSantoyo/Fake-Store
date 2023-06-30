@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeCar, sumCar, resCar } from '../Store/Car.jsx';
+import { useEffect, useState } from "react";
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -61,7 +62,7 @@ const Borrar = styled.i`
     }
 `;
 
-const Input = styled.input`
+const Cant = styled.p`
     border: none;
     background-color: #f5f5f5;
     cursor: pointer;
@@ -87,12 +88,51 @@ const Btncant = styled.i`
     }
 `;
 
+const BtnComprar = styled.button`
+    border: none;
+    background-color: #ff8395;
+    color: white;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    &:hover{
+        trnsition: all .3s ease-in-out;
+        scale: 1.1;
+    }
+`;
+
+const Divcompra = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+`;
+
+const Compra = styled.div`
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem;
+`;
+
+
 const Carrito = () => {
+    const [Total, setTotal] = useState(0);    
 
     const products = useSelector(state => state.Car.value);
     const dispatch = useDispatch();
 
-    console.log(products);
+    if(products){
+        useEffect(() => {
+            let total = 0;
+            products.map((item) => {
+                total += item.precio * item.cantidad;
+            });
+            setTotal(total);
+        }, [products]);
+    }
+
     return (
         <div>
             <h1>Carrito</h1>
@@ -106,6 +146,7 @@ const Carrito = () => {
                                 <Cnt>                            
                                     <p><strong>$</strong> {item.precio}</p>
                                     <p><strong>Cantidad:</strong> {item.cantidad}</p>
+                                    <p><strong>Total:</strong> ${item.precio * item.cantidad}</p>
                                 </Cnt>
                             </ContenidoCard>
                             <Acciones>
@@ -113,18 +154,24 @@ const Carrito = () => {
                                     className="fa-solid fa-trash" onClick={() => dispatch(removeCar(item.id))}>
                                 </Borrar>
                                 <Editcnt>
-                                    <Input type="text" value={item.cantidad} /> 
+                                    <Cant>{item.cantidad}</Cant> 
                                     <Btncant 
                                     className="fa-solid fa-minus" onClick={() => dispatch(resCar(item.id))}>                                        
                                     </Btncant>
                                     <Btncant className="fa-solid fa-plus" 
                                     onClick={() => dispatch(sumCar(item.id))}>
-                                    </Btncant>                                                                       
-                                </Editcnt>
-                            </Acciones>
+                                    </Btncant>                                                               
+                                </Editcnt>                                
+                            </Acciones>                            
                         </Card>
                     ))                                
-                }            
+                }
+                <Divcompra>
+                    <Compra>
+                        <h2>Total: ${Math.round(Total * 100) / 100}</h2>
+                        <BtnComprar>Pagar ahora</BtnComprar>
+                    </Compra>
+                </Divcompra>
         </div>
     );
 }

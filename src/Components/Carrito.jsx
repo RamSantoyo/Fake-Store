@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from "react-router-dom"
 import styled from 'styled-components';
 
 const Span = styled.span`
@@ -24,7 +25,9 @@ const Carrito = () => {
 
     return(
         <div>
-            <Car className="fa-solid fa-cart-shopping"></Car>
+            <Link to="/carrito">
+                <Car className="fa-solid fa-cart-shopping"></Car>
+            </Link>
             <Span>{products.length}</Span>
         </div>
     )
