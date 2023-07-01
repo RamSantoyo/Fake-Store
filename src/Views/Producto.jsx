@@ -3,6 +3,8 @@ import React from 'react'
 import Star from '../Components/Star'
 import Acciones from '../Components/Acciones';
 import { useLoaderData } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import Check from '../Components/Check';
 import styled from 'styled-components'
 
 const Contenedor = styled.div`
@@ -41,10 +43,13 @@ const CntAcciones = styled.div`
 
 const Producto = () => {
 
+    const selector = useSelector((state) => state.Modalcheck.value);
+
     const { data } = useLoaderData();
 
     return (
         <div>
+            {selector ? <Check /> : null}
            {
                 data ? (
                     <Contenedor>
@@ -58,8 +63,13 @@ const Producto = () => {
                             <P><strong>Precio: </strong>${data.price}</P>
                             <CntAcciones >
                                 <Star/>
-                                <Acciones id={data.id} imagen={data.image} nombre={data.title} 
-                                categoria={data.category} precio={data.price}/>
+                                <Acciones 
+                                    id={data.id} 
+                                    imagen={data.image} 
+                                    nombre={data.title} 
+                                    categoria={data.category} 
+                                    precio={data.price}
+                                />
                             </CntAcciones>
                         </Cntdesc>
                     </Contenedor>

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import { useDispatch } from 'react-redux';
 import { addCar } from '../Store/Car.jsx';
-import { Link } from 'react-router-dom';
-//obtener el bnombre del producto, el precio y la imagen del producto por parametro
+import { Edit } from '../Store/Modalcheck.jsx';
+
 
 const Btnlike = styled.button`
     transition: all .3s ease;
@@ -44,12 +44,22 @@ const Acciones = ({ id, imagen, nombre, categoria, precio }) => {
 
     const dispatch = useDispatch();
 
+    const actioncar = () => {
+        dispatch(addCar({ id, imagen, nombre, categoria, precio, cantidad: 1 }));
+
+        dispatch(Edit(true));
+        setTimeout(() => {
+            dispatch(Edit(false));
+        }, 2000);
+
+    }
+
     return (
         <ContentBtn>
             <Btnlike>
                 <i className="fa-solid fa-heart"></i>
             </Btnlike>
-            <BtnAgregar onClick={() => dispatch(addCar({ id, imagen, nombre, categoria, precio, cantidad: 1 }))}>
+            <BtnAgregar onClick={ actioncar }>
                 <i className="fa-solid fa-cart-plus"></i> Agregar al carrito
             </BtnAgregar>
         </ContentBtn>

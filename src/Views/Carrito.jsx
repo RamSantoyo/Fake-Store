@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeCar, sumCar, resCar } from '../Store/Car.jsx';
 import { useEffect, useState } from "react";
+import Fail from '../Components/Fail.jsx';
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -133,6 +134,10 @@ const Carrito = () => {
         }, [products]);
     }
 
+    if(products.length === 0){
+        return <Fail />
+    }
+    
     return (
         <div>
             <h1>Carrito</h1>
@@ -146,7 +151,9 @@ const Carrito = () => {
                                 <Cnt>                            
                                     <p><strong>$</strong> {item.precio}</p>
                                     <p><strong>Cantidad:</strong> {item.cantidad}</p>
-                                    <p><strong>Total:</strong> ${item.precio * item.cantidad}</p>
+                                    <p><strong>Total:</strong> 
+                                        ${Math.round(item.precio * item.cantidad * 100) / 100}
+                                    </p>
                                 </Cnt>
                             </ContenidoCard>
                             <Acciones>
