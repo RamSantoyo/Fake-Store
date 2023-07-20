@@ -121,7 +121,7 @@ const Compra = styled.div`
 const Carrito = () => {
     const [Total, setTotal] = useState(0);    
 
-    const products = useSelector(state => state.Car.value);
+    const products = useSelector(state => state.Car.value);    
     const dispatch = useDispatch();
 
     if(products){

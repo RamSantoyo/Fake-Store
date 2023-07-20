@@ -3,6 +3,7 @@ import Favoritos from './Favoritos'
 import Category from './Category'
 import Car from './Car'
 import Modalcheck from './Modalcheck'
+import Login from './Loginstate'
 
 export default configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export default configureStore({
     Category: Category,
     Car: Car,
     Modalcheck: Modalcheck,
+    Login: Login,
   },
 })
