@@ -2,8 +2,11 @@ import styled from "styled-components"
 import Logotipo from "../assets/logo.png"
 import { Link } from "react-router-dom"
 import Carrito from "./Carrito"
-import { useDispatch } from "react-redux"
-import { Actionlogin} from '../Store/Loginstate'
+import Heart from "./Heart"
+import { useDispatch, useSelector } from "react-redux"
+import { useState, useEffect } from 'react';
+import UserClose from "./UserClose";
+import { Actionlogin } from '../Store/Loginstate'
 
 const Navegation = styled.nav`
     display: flex;
@@ -27,7 +30,7 @@ const Space = styled.div`
 `;
 
 const Logo = styled.img`
-    width: 30%;
+    width: 60%;
 `;
 
 const Logeo = styled.a`
@@ -37,26 +40,36 @@ const Logeo = styled.a`
 
 const Nav = () => {
     const dispatch = useDispatch();
+    const logeo = useSelector((state) => state.User.value);
+
+    const [Modal , setModal] = useState(false);
+
+    const handleClick = () => {
+        setModal(!Modal);
+      };
+
     return (
         <Navegation>
             <Space>
-                <Logo src={Logotipo} alt="Logo"/>
-                <Space>
-                    <li>
-                        <Link to="/">Inicio</Link>
-                    </li>
-                    <li>
-                        <Link to="/">Nosotros</Link>
-                    </li>
-                    <li>
-                        <Link to="/contacto">Contacto</Link>
-                    </li>
-                </Space>
+                <Link to="/">
+                    <Logo src={Logotipo} alt="Logo"/>
+                </Link>
             </Space>
                 <Contenido>
-                    <i className="fa-solid fa-heart"></i>                    
-                    <Carrito />                         
+                    {
+                        logeo ? <Heart/> : null
+                    }                                        
+                    <Carrito />
+                    {logeo ? 
+                    <>
+                        <Logeo onClick={() => handleClick()}><i className="fa-solid fa-circle-user"></i> Welcome User 1!!</Logeo>
+                        {
+                            Modal ? <UserClose Modal={Modal} setModal={setModal}/> : null
+                        }
+                    </>
+                    : 
                     <Logeo onClick={() => dispatch(Actionlogin())}><i className="fa-solid fa-circle-user"></i> Login</Logeo>
+                    }
                 </Contenido> 
         </Navegation>
     )

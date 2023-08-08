@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { Actionlogin } from '../Store/Loginstate'
+import { ActionUser } from '../Store/User'
 import FormRegister from "./FormRegister";
 import SignRedes from "./SignRedes";
+import Api from "../Apis/Api";
 
 const Card = styled(Form)`
     display: flex;
@@ -78,6 +82,10 @@ const LinkRegistro = styled.p`
 
 const FormLogin = () => {
 
+    const dispatch = useDispatch();
+    
+    const { Login } = Api;
+
     const [Active , setActive] = useState(true);
 
     const handleClick = () => {
@@ -89,31 +97,51 @@ const FormLogin = () => {
             <Formik
             //valores iniciales
                 initialValues={{
-                    email: '',
+                    user: '',
                     password: '',          
                 }}
                 //validaciones
                 validate={(values) => {
                     const errors = {};
-                    if (!values.email) errors.email = 'Required email!';
+                    if (!values.user) errors.user = 'Required user!';
                     if (!values.password) errors.password = 'Required password!';
                     return errors;
                 }}
                 //submit
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
-                }}
+                onSubmit={async (values, { setSubmitting }) => {
+                    try {
+                      await new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                          Login(values.user, values.password)
+                            .then((res) => {
+                              if (res.data.token) {
+                                dispatch(Actionlogin(true));
+                                dispatch(ActionUser(true));
+                              }
+                              resolve(); 
+                            })
+                            .catch((err) => {
+                              console.log(err);
+                              reject(err); 
+                            });
+                        }, 400);
+                      });
+                    } catch (error) {
+                      // Manejar el error aquí (por ejemplo, mostrar una notificación de error)
+                      console.error("Error:", error);
+                      alert("User or password incorrect");
+                    }
+                  
+                    setSubmitting(false);
+                  }}
                 >
                 {({ isSubmitting }) => (
                     <Card>
                         <h1>Sign in</h1>
                         <ContentInput>
-                            <label htmlFor="email">Email</label>
-                            <Input type="email" name="email" />
-                            <Error name="email" component="div" />
+                            <label htmlFor="user">user</label>
+                            <Input type="text" name="user" />
+                            <Error name="user" component="div" />
                         </ContentInput>
                         <ContentInput>
                             <label htmlFor="password">Password</label>

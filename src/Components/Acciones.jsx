@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addCar } from '../Store/Car.jsx';
+import { addHeart } from '../Store/Heart.jsx';
 import { Edit } from '../Store/Modalcheck.jsx';
-
 
 const Btnlike = styled.button`
     transition: all .3s ease;
@@ -43,6 +43,7 @@ const ContentBtn = styled.div`
 const Acciones = ({ id, imagen, nombre, categoria, precio }) => {
 
     const dispatch = useDispatch();
+    const logeo = useSelector((state) => state.User.value);
 
     const actioncar = () => {
         dispatch(addCar({ id, imagen, nombre, categoria, precio, cantidad: 1 }));
@@ -54,9 +55,21 @@ const Acciones = ({ id, imagen, nombre, categoria, precio }) => {
 
     }
 
+    const actionheart = () => {
+        if (logeo) {            
+            dispatch(addHeart({ id, imagen, nombre, categoria, precio, cantidad: 1 }));
+
+            dispatch(Edit(true));
+            setTimeout(() => {
+                dispatch(Edit(false));
+            }, 2000);
+        }
+        alert("Debes iniciar sesion para agregar a favoritos");
+    }
+
     return (
         <ContentBtn>
-            <Btnlike>
+            <Btnlike onClick={ actionheart }>
                 <i className="fa-solid fa-heart"></i>
             </Btnlike>
             <BtnAgregar onClick={ actioncar }>

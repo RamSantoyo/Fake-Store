@@ -2,7 +2,7 @@
 import React from 'react'
 import Star from '../Components/Star'
 import Acciones from '../Components/Acciones';
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom"; 
 import { useSelector } from 'react-redux';
 import Check from '../Components/Check';
 import styled from 'styled-components'

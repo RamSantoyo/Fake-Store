@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import SignRedes from "./SignRedes";
+import Api from "../Apis/Api";
 
 
 const Card = styled(Form)`
@@ -38,7 +39,11 @@ const Input = styled(Field)`
 
 
 const Error = styled(ErrorMessage)`
-    
+    position: absolute;
+    border-radius: 1rem;
+    color: #ff4763;
+    margin-top: -3rem;
+    margin-left: 6rem;
 `;
 
 const BtnLogin = styled.button`
@@ -83,6 +88,8 @@ const Inputs = styled.div`
 
 const FormRegister = ({Active, setActive}) => {
 
+    const { Register } = Api;
+
     const handleClick = () => {
         setActive(!Active);
       };
@@ -100,16 +107,23 @@ const FormRegister = ({Active, setActive}) => {
       }}
       // validate and onSubmit...
         validate={(values) => {
+            const requiredFields = ['email', 'password', 'username', 'phone', 'firstname', 'lastname', 'city', 'street'];
             const errors = {};
-            if (!values.email) {
-                errors.email = "Required";
-            }
+        
+            requiredFields.forEach(field => {
+                if (!values[field]) {
+                    errors[field] = 'Required';
+                }
+            });
+        
+            return errors;
         }}
 
          //submit
          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
+            setTimeout(() => {                
+                Register(values.email, values.username, values.password, values.firstname, values.lastname, values.city, values.street, values.phone);
+                alert("Created User")
                 setSubmitting(false);
             }, 400);
         }}

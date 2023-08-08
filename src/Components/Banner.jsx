@@ -18,7 +18,7 @@ const Texto = styled.p`
 
 const Parrafo = styled.p`
     font-weight: var(--regular);
-    font-size: .9rem;
+    font-size: 1rem;
 `;
 
 

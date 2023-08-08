@@ -4,6 +4,8 @@ import Category from './Category'
 import Car from './Car'
 import Modalcheck from './Modalcheck'
 import Login from './Loginstate'
+import User from './User'
+import Heart from './Heart'
 
 export default configureStore({
   reducer: {
@@ -12,5 +14,7 @@ export default configureStore({
     Car: Car,
     Modalcheck: Modalcheck,
     Login: Login,
+    User: User,
+    Heart: Heart,
   },
 })

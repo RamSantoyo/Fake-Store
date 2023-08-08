@@ -23,7 +23,7 @@ const Modal = styled.div`
 const Check = () => {
     return (
         <Modal>
-            <h1>Agregaste el producto al carrito</h1>
+            <h1>Agregaste el producto con exito!!</h1>
             <i className="fa-solid fa-circle-check"></i>
         </Modal>
     )
