@@ -12,6 +12,11 @@ const Spanheart = styled.span`
     font-size: .8rem;
     top: -1rem;
     left: -.1rem;
+    @media (max-width: 768px) {
+        position: absolute;
+        top: 11%;
+        left: 16%;
+    }
 `;
 
 const Hearts = styled.i`

@@ -18,6 +18,20 @@ const Modal = styled.div`
         font-size: 5rem;
         color: #ffb9c4;
     }
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        h1{
+            font-size: 1.5rem;
+        }
+        i{
+            font-size: 3rem;
+        }
+    }
+
 `;
 
 const Check = () => {

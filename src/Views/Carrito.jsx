@@ -19,6 +19,19 @@ const Card = styled.div`
         width: 100px;
         padding-left: 4rem;
     }
+    @media (max-width: 768px) {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 50%;
+            padding-left: 0;
+        }
+    }
+
 `;
 
 const ContenidoCard = styled.div`
@@ -33,12 +46,25 @@ const ContenidoCard = styled.div`
         margin: 0;
         font-size: 1.2rem;
     }
+    @media (max-width: 768px) {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 `;
 
 const Cnt = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
+    @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 `;
 
 const Acciones = styled.div`
@@ -108,6 +134,14 @@ const Divcompra = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-top: 1rem;
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 `;
 
 const Compra = styled.div`
@@ -115,6 +149,13 @@ const Compra = styled.div`
     gap: 1rem;
     align-items: center;
     padding: 1rem;
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 `;
 
 

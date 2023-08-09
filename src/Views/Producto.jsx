@@ -12,6 +12,11 @@ const Contenedor = styled.div`
     grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 2rem;
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
 `;
 
 const Cntdesc = styled.div`

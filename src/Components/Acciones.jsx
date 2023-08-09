@@ -57,7 +57,7 @@ const Acciones = ({ id, imagen, nombre, categoria, precio }) => {
 
     const actionheart = () => {
         if (!logeo) {
-            alert("Debes iniciar sesion para agregar a favoritos");                        
+            alert("You must be logged in to add to favorites");                        
         }else{
             dispatch(addHeart({ id, imagen, nombre, categoria, precio, cantidad: 1 }));
 
@@ -65,8 +65,7 @@ const Acciones = ({ id, imagen, nombre, categoria, precio }) => {
             setTimeout(() => {
                 dispatch(Edit(false));
             }, 2000);
-        }
-        
+        }        
     }
 
     return (

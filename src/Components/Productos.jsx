@@ -10,6 +10,12 @@ const Contenedorcard = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+        padding: 1rem;
+    }
+
 `;
 
 const Tarjeta = styled(Link)`
@@ -46,6 +52,13 @@ const Stars = styled.div`
     }
 `;
 
+const TtitleProduct = styled.h3`
+    @media (max-width: 768px) {
+        text-align: center;
+        font-size: 2.5rem;
+    }
+`;
+
 const Productos = () => {
     const categoria = useSelector(state => state.Category.value);
 
@@ -76,7 +89,7 @@ const Productos = () => {
       
     return (
         <div>
-            <h2>Productos</h2>
+            <TtitleProduct>Productos</TtitleProduct>
             <Contenedorcard>
             {  loading || preload ? (
                 Array.from({ length: 6 }).map((_, i) => (

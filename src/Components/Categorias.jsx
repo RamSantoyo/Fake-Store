@@ -10,6 +10,11 @@ const Contenedor = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     grid-gap: 2%;
     padding: 2rem 6rem;
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        padding: 2rem 2rem;
+        gap: 1rem;
+    }
 `;
 
 const Select = styled.button`
@@ -28,6 +33,14 @@ const Categoria = styled.p`
     text-transform: capitalize;
     font-size: 1rem;
     font-weight: var(--grande);
+`;
+
+const TitleCategory = styled.h2`
+    text-transform: capitalize;
+    font-weight: var(--grande);
+    @media (max-width: 768px) {
+        text-align: center;        
+    }
 `;
 
 const Categorias = () => {
@@ -54,7 +67,7 @@ const Categorias = () => {
     
     return (
         <div className="seccion">
-            <h2>Categorias</h2>
+            <TitleCategory>Categorias</TitleCategory>
             <Contenedor>                
                 { loading === true ? (
                     <React.Fragment>

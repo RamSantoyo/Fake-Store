@@ -19,6 +19,17 @@ const Card = styled.div`
         width: 100px;
         padding-left: 4rem;
     }
+    @media (max-width: 768px) {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 50%;
+        }
+    }
 `;
 
 const ContenidoCard = styled.div`
@@ -61,60 +72,6 @@ const Borrar = styled.i`
         trnsition: all .3s ease-in-out;
         scale: 1.1;
     }
-`;
-
-const Cant = styled.p`
-    border: none;
-    background-color: #f5f5f5;
-    cursor: pointer;
-    padding: .6rem;
-    font-size: 1rem;
-    border-radius: 4px;
-    width: 2rem;
-    text-align: center;
-`;
-
-const Editcnt = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-`;
-
-const Btncant = styled.i`
-    transition: all .3s ease-in-out;;
-    cursor: pointer;
-    &:hover{
-        trnsition: all .3s ease-in-out;
-        scale: 1.1;
-    }
-`;
-
-const BtnComprar = styled.button`
-    border: none;
-    background-color: #ff8395;
-    color: white;
-    padding: 1rem;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-    &:hover{
-        trnsition: all .3s ease-in-out;
-        scale: 1.1;
-    }
-`;
-
-const Divcompra = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
-`;
-
-const Compra = styled.div`
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    padding: 1rem;
 `;
 
 

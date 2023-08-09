@@ -3,22 +3,37 @@ import Imgbanner from '../assets/banner.jpg';
 
 const Content = styled.div`
     display: flex;
-    align-items: center;   
+    align-items: center;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }   
 `;
 
 const Titulo1 = styled.h1`
     font-weight: var(--grande);
+    @media (max-width: 768px) {
+        text-align: center;
+    }
 `;
 
 const Texto = styled.p`
     background-color: var(--primary);
     font-weight: var(--grande);
     padding: .6rem;
+    @media (max-width: 768px) {
+        text-align: center;
+        font-size: 1.2rem;
+    }
 `;
 
 const Parrafo = styled.p`
     font-weight: var(--regular);
     font-size: 1rem;
+    @media (max-width: 768px) {
+        text-align: center;
+        font-size: 1rem;
+        padding: 1rem;
+    }
 `;
 
 

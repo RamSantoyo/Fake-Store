@@ -28,12 +28,22 @@ const Info = styled.div`
     p{
         font-size: 1rem;
     }
+    @media (max-width: 768px) {
+        p{
+            padding: 0 1rem;
+            text-align: center;
+        }
 `;
 
 const ContainFooter = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
 `;
 
 const Derechos = styled.div`

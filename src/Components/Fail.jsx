@@ -11,6 +11,15 @@ const Content = styled.div`
     i{
         font-size: 5rem;
     }
+    @media (max-width: 768px) {
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 `;
 
 const Return = styled.button`

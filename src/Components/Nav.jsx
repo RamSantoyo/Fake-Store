@@ -14,12 +14,24 @@ const Navegation = styled.nav`
     align-items: center;
     padding: 2rem 5rem;
     background-color: #fff;
-    color: #000;`;
+    color: #000;
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+    `;
 
 const Contenido = styled.div`
     display: flex;
     gap: 3rem;
     align-items: center;
+    @media (max-width: 768px) {
+        margin-top: 1rem;
+        gap: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
     `;
 
 const Space = styled.div`
@@ -31,10 +43,18 @@ const Space = styled.div`
 
 const Logo = styled.img`
     width: 60%;
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 const Logeo = styled.a`
     cursor: pointer;
+    @media (max-width: 768px) {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+    }
 `;
 
 
@@ -62,7 +82,7 @@ const Nav = () => {
                     <Carrito />
                     {logeo ? 
                     <>
-                        <Logeo onClick={() => handleClick()}><i className="fa-solid fa-circle-user"></i> Welcome User 1!!</Logeo>
+                        <Logeo onClick={() => handleClick()}><i className="fa-solid fa-circle-user"></i> Welcome</Logeo>
                         {
                             Modal ? <UserClose Modal={Modal} setModal={setModal}/> : null
                         }
