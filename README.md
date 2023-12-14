@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-¡Bienvenido/a a la Tienda Falsa! Este es un proyecto creado con React, JavaScript y la API de Fake Store (https://fakestoreapi.com). El objetivo de este proyecto es simular una tienda en línea con productos ficticios. 🛍️
+¡Bienvenido/a a la Tienda Falsa! Este es un proyecto creado con React, JavaScript y la API de Fake Store (https://fakestoreapi.com). El objetivo de este proyecto es simular una tienda en línea con productos ficticios como proyecto. 🛍️
 
 ## Características
 
